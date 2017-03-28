@@ -2,6 +2,8 @@
 using Microsoft.Xna.Framework.Graphics;
 using PerishedEngine.Graphics;
 using PerishedEngine.Managers;
+using System;
+using System.Diagnostics;
 
 namespace PerishedEngine.UI
 {
@@ -11,6 +13,7 @@ namespace PerishedEngine.UI
         private float baseValue = 0;
         private float maxValue = 10;
         private float value;
+        private bool canMove = false;
 
         private float length = 300;
         private Texture2D sliderKnob;
@@ -39,6 +42,12 @@ namespace PerishedEngine.UI
         public override void Update(GameTime gameTime)
         {
             UpdateKnobPosition();
+
+            float offset = sliderKnobCollision.X - position.X;
+            float pixel = maxValue / length;
+            float val = pixel * sliderKnobCollision.Center.X;
+            value = (float)Math.Round((decimal)val, 0, MidpointRounding.AwayFromZero);
+            Debug.WriteLine(value);
         }
 
         public override void Draw(SpriteBatch spriteBatch)
@@ -49,7 +58,16 @@ namespace PerishedEngine.UI
 
         private void UpdateKnobPosition()
         {
-            if (InputManager.Instance.mouseIsDown(MouseButton.Left) && Sprite.size.Contains(InputManager.Instance.getMousePos()))
+            if (InputManager.Instance.mouseIsPressed(MouseButton.Left) && Sprite.size.Contains(InputManager.Instance.getMousePos()))
+            {
+                canMove = true;
+            }
+            if (InputManager.Instance.mouseIsReleased(MouseButton.Left))
+            {
+                canMove = false;
+            }
+
+            if (canMove)
             {
                 int newX = (int)InputManager.Instance.getMousePos().X;
                 if (newX < position.X + Sprite.size.Width - sliderKnob.Width / 2 && newX > position.X + sliderKnob.Width / 2)

@@ -110,6 +110,38 @@ namespace PerishedEngine.Managers
         }
 
         /// <summary>
+        /// Returns true if a mouse button has been released
+        /// </summary>
+        /// <param name="mouseButton"></param>
+        /// <returns></returns>
+        public bool mouseIsReleased(MouseButton mouseButton)
+        {
+            switch (mouseButton)
+            {
+                case MouseButton.Left:
+                    if (mouseState.LeftButton == ButtonState.Released && oldMouseState.LeftButton == ButtonState.Pressed)
+                    {
+                        return true;
+                    }
+                    break;
+                case MouseButton.Middle:
+                    if (mouseState.MiddleButton == ButtonState.Released && oldMouseState.MiddleButton == ButtonState.Pressed)
+                    {
+                        return true;
+                    }
+                    break;
+                case MouseButton.Right:
+                    if (mouseState.RightButton == ButtonState.Released && oldMouseState.RightButton == ButtonState.Pressed)
+                    {
+                        return true;
+                    }
+                    break;
+            }
+
+            return false;
+        }
+
+        /// <summary>
         /// Returns if a mouse specific mouse button was pressed
         /// </summary>
         /// <param name="mouseButton">What button are we going to check</param>
