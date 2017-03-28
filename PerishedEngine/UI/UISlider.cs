@@ -3,19 +3,18 @@ using Microsoft.Xna.Framework.Graphics;
 using PerishedEngine.Graphics;
 using PerishedEngine.Managers;
 using System;
-using System.Diagnostics;
 
 namespace PerishedEngine.UI
 {
     class UISlider : UIElement
     {
 
-        private float baseValue = 0;
-        private float maxValue = 10;
+        private float baseValue;
+        private float maxValue;
         private float value;
         private bool canMove = false;
 
-        private float length = 300;
+        private float length;
         private Texture2D sliderKnob;
         private Rectangle sliderKnobCollision;
 
@@ -23,12 +22,12 @@ namespace PerishedEngine.UI
 
         public NineSlicedSprite Sprite;
 
-        public UISlider(int baseValue, int maxValue, Vector2 position)
+        public UISlider(int baseValue, int maxValue, Vector2 position, int length)
         {
             this.baseValue = baseValue;
             this.maxValue = maxValue;
-            this.value = maxValue / 2;
             this.position = position;
+            this.length = length;
         }
 
         public override void LoadContent()
@@ -47,7 +46,6 @@ namespace PerishedEngine.UI
             float pixel = maxValue / length;
             float val = pixel * sliderKnobCollision.Center.X;
             value = (float)Math.Round((decimal)val, 0, MidpointRounding.AwayFromZero);
-            Debug.WriteLine(value);
         }
 
         public override void Draw(SpriteBatch spriteBatch)

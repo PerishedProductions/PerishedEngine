@@ -18,7 +18,7 @@ namespace PerishedEngine.UI.UIScreens
 
             testButton.onButtonClicked += TestButton_onButtonClicked;
 
-            panel.CreateUIElement(new UISlider(0, 10, new Vector2(15, 300)));
+            panel.CreateUIElement(new UISlider(0, 100, new Vector2(20, 300), 450));
 
             base.LoadContent();
         }

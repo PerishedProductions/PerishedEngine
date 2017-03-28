@@ -12,11 +12,7 @@ namespace PerishedEngine.Managers
         public bool Paused = false;
         public Game Game;
 
-        public void CloseGame()
-        {
-            //TODO: Add a method to close the game
-            //Game.Exit();
-        }
+
 
     }
 }
