@@ -37,7 +37,7 @@ namespace PerishedEngine.UI
                     textureName = "Panel";
                     break;
                 case ColorTheme.Light:
-                    textureName = "Panel";
+                    textureName = "Button";
                     break;
                 case ColorTheme.None:
                     textureName = null;

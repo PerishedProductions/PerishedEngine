@@ -39,7 +39,7 @@ namespace PerishedEngine
             this.IsMouseVisible = true;
 
             LevelManager.Instance.Initialize(new GameLevel());
-            GameManager.Instance.Game = this;
+            GameManager.Instance.game = this;
             base.Initialize();
         }
 
@@ -55,6 +55,9 @@ namespace PerishedEngine
             ResourceManager.Instance.LoadAllContent(Content);
             GraphicsManager.Instance.Initialize(spriteBatch);
             GraphicsManager.Instance.LoadContent();
+            GraphicsManager.Instance.windowWidth = graphics.PreferredBackBufferWidth;
+            GraphicsManager.Instance.windowHeight = graphics.PreferredBackBufferHeight;
+
             LevelManager.Instance.currentLevel.LoadContent();
             UIManager.Instance.ChangeCanvas(new UIPlayground());
         }

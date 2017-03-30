@@ -19,16 +19,16 @@ namespace PerishedEngine.UI
 
         public ColorTheme windowTheme = ColorTheme.Dark;
 
-        public UIButton(String text, Rectangle size, UIScreen canvas)
+        public UIButton(String text, Rectangle size)
         {
             this.size = size;
-            this.text = (UIText)canvas.CreateUIElement(new UIText(size, text, Alignment.Center), UILayer.Front);
+            this.text = new UIText(size, text, Alignment.Center);
         }
 
-        public UIButton(String text, Rectangle size, ColorTheme theme, UIScreen canvas)
+        public UIButton(String text, Rectangle size, ColorTheme theme)
         {
             this.size = size;
-            this.text = (UIText)canvas.CreateUIElement(new UIText(size, text, Alignment.Center), UILayer.Front);
+            this.text = new UIText(size, text, Alignment.Center);
             this.windowTheme = theme;
         }
 
@@ -87,10 +87,12 @@ namespace PerishedEngine.UI
             if (!Selected)
             {
                 sprite.Draw(spriteBatch);
+                text.Draw(spriteBatch);
             }
             else
             {
                 spriteHover.Draw(spriteBatch);
+                text.Draw(spriteBatch);
             }
         }
     }

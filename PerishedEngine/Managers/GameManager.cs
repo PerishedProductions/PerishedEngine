@@ -10,9 +10,12 @@ namespace PerishedEngine.Managers
         private GameManager() { }
 
         public bool Paused = false;
-        public Game Game;
+        public Game game { get; set; }
 
-
+        public int getWindowWidth()
+        {
+            return game.Window.ClientBounds.Width;
+        }
 
     }
 }

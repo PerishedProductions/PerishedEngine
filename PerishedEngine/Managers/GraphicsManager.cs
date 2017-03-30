@@ -13,6 +13,9 @@ namespace PerishedEngine.Managers
 
         private SpriteBatch spriteBatch;
 
+        public int windowWidth { get; set; }
+        public int windowHeight { get; set; }
+
         public SpriteFont smallFont;
         public SpriteFont mediumFont;
         public SpriteFont bigFont;

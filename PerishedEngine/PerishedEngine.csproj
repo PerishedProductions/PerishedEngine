@@ -56,6 +56,7 @@
     <Compile Include="UI\UIButton.cs" />
     <Compile Include="UI\UIElement.cs" />
     <Compile Include="UI\UIMenu.cs" />
+    <Compile Include="UI\UIMenuBar.cs" />
     <Compile Include="UI\UIPanel.cs" />
     <Compile Include="UI\UIScreen.cs" />
     <Compile Include="UI\UIScreens\UIPlayground.cs" />
